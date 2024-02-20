@@ -1,0 +1,32 @@
+Working Command For Local Host
+------------------------------
+
+ docker run -d --name keycloakP --net postgre-keycloak-network -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -e KC_DB=postgres -e KC_DB_URL=jdbc:postgresql://postgres-db:5432/keycloak -e KC_DB_USERNAME=postgres -e KC_DB_PASSWORD=password -p 8082:8080 quay.io/keycloak/keycloak:latest start-dev
+
+
+
+Connecting an existing container to a new docker network
+--------------------------------------------------------
+docker network create your-network-name
+docker network connect your-network-name container-name
+
+
+docker network create postgre-keycloak-network
+docker network connect postgre-keycloak-network postgres-db
+
+
+docker run --name postgres-db -e POSTGRES_PASSWORD=password -d -p 5432:5432 -v /home/dilshan/postgreVolume:/var/lib/postgresql/data postgres:latest
+
+
+
+
+My Keycloak Test User Values
+----------------------------
+User: testUser / testuser
+Password: test
+
+Keycloak Admin
+-----------------
+User: admin
+Password: admin
+http://localhost:8082/admin

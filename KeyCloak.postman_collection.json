@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "132c2942-a74a-4cf9-a646-47ea20cee0dc",
+		"name": "KeyCloak",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1150283"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"keyCloakToken\", jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "grant-type",
+						"value": "password",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "client_id",
+						"value": "test-1-rest-api",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "username",
+						"value": "testUser",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "test",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "test-1-rest-api",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "testUser",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8082/realms/test-1/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"realms",
+						"test-1",
+						"protocol",
+						"openid-connect",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant-type",
+							"value": "password",
+							"disabled": true
+						},
+						{
+							"key": "client_id",
+							"value": "test-1-rest-api",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "testUser",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
